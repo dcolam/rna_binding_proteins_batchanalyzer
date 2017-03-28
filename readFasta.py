@@ -39,7 +39,7 @@ def load_file(filepath):
 #Fill in seq_list and seq_list_diff
 #######################################################
     for line in (seq):
-        line = line.strip()
+        #line = line.strip()
         if '>' in line:
             numberOfIsoforms += 1
             seq_list[str(filename + '_Transcript%s' %numberOfIsoforms)] = ''
@@ -79,7 +79,7 @@ for key, value in seq_list.iteritems():
     print key
     print ''
     for keys, values in seq_list[key].iteritems():
-        print keys, values
+        print values
         print 'Number of bp: %s\n' %len(values)
 
         

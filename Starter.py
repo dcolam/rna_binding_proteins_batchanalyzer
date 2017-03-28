@@ -8,6 +8,8 @@ import sys, time, os
 from getIDs import getIDs
 from retrieve_sequence_inbatch import startSeqsaving
 from readFasta import batch_load_files
+from rbp_webdriver import rbp_batch
+from load_csv import load_csv_in_batch
 start_time = time.time()
 Input = ''
 Output = ''
@@ -81,11 +83,22 @@ print 'Number of genes are: ', numberofgenes
 
 for key in path2groups:
     path2groups[key].append(batch_load_files(path2groups[key][0]))
+    #rbp_batch(path2groups[key])
+    
 
+print path2groups
 for key in path2groups: 
     print key
+    #rbp_batch(path2groups[key])
     for key1 in path2groups[key]:
         print key1
+        #rbp_batch(path2groups[key1])
+        
+
+print path2groups
+rbp_batch(path2groups)
+load_csv_in_batch(path[1])
+
 
 #next step: build a function which sends the seq to the database and stores the .csv in a folder
 
