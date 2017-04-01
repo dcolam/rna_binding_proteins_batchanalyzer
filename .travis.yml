@@ -30,10 +30,9 @@ before_install:
  - sudo apt-get install google-chrome-stable
 
 before_script:
- - mkdir -p /chromedriver_dir
  - wget http://chromedriver.storage.googleapis.com/2.28/chromedriver_linux64.zip
- - unzip -o chromedriver_linux64.zip -d /chromedriver_dir
- - export PATH=$PATH:$PWD/chromedriver_dir
+ - unzip -o chromedriver_linux64.zip
+ - export PATH=$PATH:$PWD/chromedriver
  - "export DISPLAY=:99.0"
  - "sh -e /etc/init.d/xvfb start"
  - npm i -g npm@^3
