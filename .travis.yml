@@ -31,9 +31,9 @@ before_install:
 
 before_script:
   - wget http://chromedriver.storage.googleapis.com/2.28/chromedriver_linux64.zip
-  - unzip -o chromedriver_linux64.zip
-  - sudo chmod u+x chromedriver
-  - sudo mv chromedriver /usr/bin/
+  - mkdir chromedriver
+  - unzip -o chromedriver_linux64.zip -C chromedriver
+  - export PATH=$PATH:$PWD/chromedriver
   - "export DISPLAY=:99.0"
   - "sh -e /etc/init.d/xvfb start"
   - npm i -g npm@^3
