@@ -30,13 +30,14 @@ before_install:
  - sudo apt-get install google-chrome-stable
 
 before_script:
-  - wget http://chromedriver.storage.googleapis.com/2.28/chromedriver_linux64.zip
-  - unzip -o chromedriver_linux64.zip
-  - export PATH=$PATH:$PWD/chromedriver
-  - "export DISPLAY=:99.0"
-  - "sh -e /etc/init.d/xvfb start"
-  - npm i -g npm@^3
-  - sleep 3 
+ - mkdir -p chromedriver
+ - wget http://chromedriver.storage.googleapis.com/2.28/chromedriver_linux64.zip
+ - unzip -o chromedriver_linux64.zip -C chromedriver
+ - export PATH=$PATH:$PWD/chromedriver
+ - "export DISPLAY=:99.0"
+ - "sh -e /etc/init.d/xvfb start"
+ - npm i -g npm@^3
+ - sleep 3 
   
 cache: pip
 install:
