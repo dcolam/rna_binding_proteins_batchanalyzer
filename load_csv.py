@@ -6,25 +6,22 @@ Created on Mar 15, 2017
 
 #!/usr/bin/python
 
-from selenium import webdriver
-
-
-
 import csv 
 import os
 
 def dir_checker_csv(dirpath, list):
     a = list
-    if os.path.isdir(dirpath):
-        for filename in os.listdir(dirpath):
-            if not '.DS_Store' in filename:
-                if '.csv' in dirpath:
-                    a.append(dirpath + '/' + filename)
-
-                elif os.path.isdir(dirpath + '/'+ filename):
-                    dir_checker_csv(dirpath + '/'+ filename, a)
-                elif '.csv' in filename:
-                    a.append(dirpath + '/' + filename)
+    if not 'output' in dirpath:
+        if os.path.isdir(dirpath):
+            for filename in os.listdir(dirpath):
+                if not '.DS_Store' in filename:
+                    if '.csv' in dirpath:
+                        a.append(dirpath + '/' + filename)
+    
+                    elif os.path.isdir(dirpath + '/'+ filename):
+                        dir_checker_csv(dirpath + '/'+ filename, a)
+                    elif '.csv' in filename:
+                        a.append(dirpath + '/' + filename)
     #print a
     return a
 
@@ -59,9 +56,6 @@ def load_csv(filepath):
                  
     return dict_rbp_per_gene 
 
-def common_elements(list1, list2, list3, list4, list5, list6, list7, list8, list9, list10):
-        
-    return list(set(list1) & set(list2) & set(list3) & set(list4) & set(list5) & set(list6) & set(list7) & set(list8) & set(list9) & set(list10))
 
 def load_csv_in_batch(path2allgroups):
     filepaths = []
@@ -110,9 +104,15 @@ def save_csv_of_allrbp(dict_from_loadcsv, destpath):
             for keys, value in dict_from_loadcsv[key].items():
                 filewriter.writerow([keys, value])
     csvfile.close()'''
+    if os.path.isdir(destpath):
+        if not os.path.isdir(destpath + '/output'):
+            os.makedirs(destpath + '/output')
+            
+    for filename in os.listdir(destpath + '/output'):
+         if '.csv' in filename:
+             numofprevioustrials = len(os.listdir(destpath + '/output')) + 1
     
-    
-    save_csv = open(destpath + '/allrpbsaved.csv', 'w+')
+    save_csv = open(destpath + '/output/allrpbsaved%s.csv'% numofprevioustrials , 'w+')
     for key in dict_from_loadcsv:
             save_csv.write(str(key) + ',\n')
             print key
@@ -144,7 +144,9 @@ def save_csv_of_allrbp(dict_from_loadcsv, destpath):
         
         
 #Tester
-load_csv_in_batch('/Users/david/Documents/Home/Studium/Master/in-silico/Gene')
+#dict_allrpb = load_csv_in_batch('/Users/david/Documents/Home/Studium/Master/in-silico/Gene')
+
+#print dict_allrpb
 
 #
 #/Users/david/Documents/Home/Studium/Master/in-silico/try2/all.csv

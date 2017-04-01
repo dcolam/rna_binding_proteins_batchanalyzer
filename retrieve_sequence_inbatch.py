@@ -42,15 +42,19 @@ def batch_retrieve_seq(list_gene_id, singlefile, path): #give a list with gene i
 def convert_ID_getAllIsoformsNM(ensemble_ID, boolSave, path, preffix = 'NM'): #define prefix, default = NM for mRNA transcript variants
     print 'Converting IDs'
     mg = mygene.MyGeneInfo()
-    
+    print mg.getgene(ensemble_ID, fields = 'all', as_dataframe = True)
     list_xli = mg.getgene(ensemble_ID, fields = 'all', as_dataframe = True)['accession']['rna']
     list_transcript = [mg.getgene(ensemble_ID, fields = 'all', as_dataframe = True)['symbol']]
-    for i in range(0, len(list_xli)):
-        if preffix == 'NM':
-            if list_xli[i][:2] == preffix:
+    if not preffix == 'all':
+        for i in range(0, len(list_xli)):
+            if preffix == 'NM':
+                if list_xli[i][:2] == preffix:
+                    list_transcript.append(list_xli[i])
+            elif list_xli[i][:2] == preffix:
                 list_transcript.append(list_xli[i])
-        elif list_xli[i][:2] == preffix:
-            list_transcript.append(list_xli[i])
+    else:
+        list_transcript.append(li_xli)
+        
     print 'ID converted'
     if boolSave == False:
         return list_transcript
@@ -59,6 +63,7 @@ def convert_ID_getAllIsoformsNM(ensemble_ID, boolSave, path, preffix = 'NM'): #d
             batch_retrieve_seq(list_transcript, 'True', path)
         else:
             print 'No RefSeq Ids with the Prefix %s found' %preffix
+            convert_ID_getAllIsoformsNM(ensemble_ID, boolSave, path, 'all')
     
 
 
@@ -68,6 +73,19 @@ def startSeqsaving(xli, path):
         if xli[i]!= '':
             convert_ID_getAllIsoformsNM(xli[i], True, path, 'NM')
     
+    
+#Tester
+'''
+xli = ['ENSMUSG00000030030']
+path = '/Users/david/Documents/Home/Studium/Master/in-silico/try2'
+
+list_gene_id = ['Gm10269']
+
+batch_retrieve_seq(list_gene_id, 'True', path)
+for i in range(0, len(xli)):
+    convert_ID_getAllIsoformsNM(xli[i], True, path, 'NM')
+'''    
+
 
 #timer = str(round((time.time() - start_time), 2))
 

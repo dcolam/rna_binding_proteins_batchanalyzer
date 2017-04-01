@@ -17,6 +17,7 @@ def getIDs(path2Table):
         row = mytable[i].split(',')
         table_ID.append(row)
     myrawtable.close()
+    print table_ID[:50]
     return table_ID
 
 #list_ID = getIDs('/Users/david/Documents/Home/Studium/Master/in-silico/Gene_acd_ensemble_ID.csv')

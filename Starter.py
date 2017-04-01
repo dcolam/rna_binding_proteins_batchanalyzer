@@ -14,23 +14,24 @@ start_time = time.time()
 Input = ''
 Output = ''
 
+print sys.argv
 
 if len(sys.argv) == 1:
     while Input == '' and Output == '':
         Input = raw_input('Specify Path to your table with genes: ')
         print ''
-        path = ['', Input, Output]    
+        paths = ['', Input, Output]    
 else:
-    path = sys.argv
+    paths = sys.argv
     
-while not os.path.isfile(path[1]):
+while not os.path.isfile(paths[1]):
     print 'Please, specify a path to your genelist!\n'
     Input = raw_input('Specify Path to your table with genes: ')
 
     print ''
-    path = ['', Input, Output]
+    paths = ['', Input, Output]
 
-table_ID = getIDs(path[1])
+table_ID = getIDs(paths[1])
 numberOfGeneGroups = len(table_ID[1])
 
 dict_geneGroups = {}
@@ -38,30 +39,32 @@ dict_geneGroups = {}
 for i in range(0, len(table_ID[0])):
     dict_geneGroups[table_ID[0][i]] = []
     
-for i in range(0, numberOfGeneGroups):
+for i in range(0, len(table_ID[0])):
     #dict_geneGroups[str('group' + str(i+1))] = []
     for j in range(1, len(table_ID)):
-            dict_geneGroups[table_ID[0][i]].append(table_ID[j][i])
+        print j, i
+
+        dict_geneGroups[table_ID[0][i]].append(table_ID[j][i])
             
 #print dict_geneGroups
         
-path = raw_input('Where do you want to save the sequences?')
+#path = raw_input('Where do you want to save the sequences?')
 
-if path != 'no':
-    path = path + '/groupedSequences'
-    path2groups = {}
-    if not os.path.exists(path):
-        os.makedirs(path)
 
-    for key in dict_geneGroups:
-        pathGroup = path + '/' + key
-        path2groups[key] = []
-        if not os.path.exists(pathGroup):
-            os.makedirs(pathGroup)
-            print 'Folder %s created' %key
-            print ''
-        path2groups[key].append(pathGroup)
-        startSeqsaving(dict_geneGroups[key], pathGroup) 
+path = os.path.dirname(paths[1]) + '/Output/groupedSequences'
+path2groups = {}
+if not os.path.exists(path):
+    os.makedirs(path)
+
+for key in dict_geneGroups:
+    pathGroup = path + '/' + key
+    path2groups[key] = []
+    if not os.path.exists(pathGroup):
+        os.makedirs(pathGroup)
+        print 'Folder %s created' %key
+        print ''
+    path2groups[key].append(pathGroup)
+    startSeqsaving(dict_geneGroups[key], pathGroup) 
 
 print ''
 print 'Groups: '

@@ -72,7 +72,7 @@ def batch_load_files(path2folder):
 
 #Tester
 
-seq_list = batch_load_files('/Users/david/Documents/Home/Studium/Master/in-silico/groupedSequences')
+'''seq_list = batch_load_files('/Users/david/Documents/Home/Studium/Master/in-silico/groupedSequences')
 print seq_list
 
 for key, value in seq_list.iteritems():
@@ -80,7 +80,7 @@ for key, value in seq_list.iteritems():
     print ''
     for keys, values in seq_list[key].iteritems():
         print values
-        print 'Number of bp: %s\n' %len(values)
+        print 'Number of bp: %s\n' %len(values)'''
 
         
 
