@@ -30,8 +30,8 @@ def rbp_webdriver(path, gene_name, seq):
     prefs = {"download.default_directory" : path} #set path for download folder here
     options.add_experimental_option("prefs",prefs) #hallo
     
-    driver = webdriver.Chrome('/usr/bin/chromedriver',chrome_options=options)
-    
+    driver = webdriver.Chrome(chrome_options=options)
+    #'/usr/bin/chromedriver'
     #assert "CISBP-RNA Database: Catalog of Inferred Sequence Binding Preferences of RNA binding proteins" in driver.title
     elem = driver.find_element_by_id("scanDNA")
     elem.clear()
