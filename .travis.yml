@@ -22,4 +22,4 @@ install:
   - pip install selenium
   
 script:
-  - python rna_binding_proteins_batchanalyzer/Starter.py rna_binding_proteins_batchanalyzer/Gene_acd_ensemble_ID.csv
+  - python Starter.py Gene_acd_ensemble_ID.csv
