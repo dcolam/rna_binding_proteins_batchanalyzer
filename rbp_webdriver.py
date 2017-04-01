@@ -17,12 +17,21 @@ def rbp_webdriver(path, gene_name, seq):
     species = 'Mus_musculus' #default
     
     
-    chromeOptions = webdriver.ChromeOptions()
+    options = webdriver.ChromeOptions()
+    options.binary_location = '/usr/bin/chromium-browser'
+    #All the arguments added for chromium to work on selenium
+    options.add_argument("--no-sandbox") #This make Chromium reachable
+    options.add_argument("--no-default-browser-check") #Overrides default choices
+    options.add_argument("--no-first-run")
+    options.add_argument("--disable-default-apps") 
+    
+    
+    #chromeOptions = webdriver.ChromeOptions()
     prefs = {"download.default_directory" : path} #set path for download folder here
-    chromeOptions.add_experimental_option("prefs",prefs)
-    driver = webdriver.Chrome('rna_binding_proteins_batchanalyzer/chromedriver', chrome_options=chromeOptions)
-    #/Users/david/node_modules/chromedriver/lib/chromedriver/
-    driver.get("http://cisbp-rna.ccbr.utoronto.ca/TFTools.php")
+    options.add_experimental_option("prefs",prefs) #hallo
+    
+    driver = webdriver.Chrome('/home/travis/virtualenv/python2.7.9   /chromedriver',chrome_options=options)
+    
     #assert "CISBP-RNA Database: Catalog of Inferred Sequence Binding Preferences of RNA binding proteins" in driver.title
     elem = driver.find_element_by_id("scanDNA")
     elem.clear()
