@@ -16,7 +16,7 @@ def rbp_webdriver(path, gene_name, seq):
     
     species = 'Mus_musculus' #default
     
-    
+    '''
     options = webdriver.ChromeOptions()
     options.binary_location = '/usr/bin/chromium-browser'
     #All the arguments added for chromium to work on selenium
@@ -30,18 +30,18 @@ def rbp_webdriver(path, gene_name, seq):
     prefs = {"download.default_directory" : path} #set path for download folder here
     options.add_experimental_option("prefs",prefs) #hallo
     
-    driver = webdriver.Chrome(chrome_options=options)
+    driver = webdriver.Chrome(chrome_options=options)'''
     
     #'/usr/bin/chromedriver'
     #assert "CISBP-RNA Database: Catalog of Inferred Sequence Binding Preferences of RNA binding proteins" in driver.title
     
-    '''profile = webdriver.FirefoxProfile()
+    profile = webdriver.FirefoxProfile()
     profile.set_preference("browser.download.folderList", 2)
     profile.set_preference("browser.download.manager.showWhenStarting", False)
     profile.set_preference("browser.download.dir", path)
     profile.set_preference("browser.helperApps.neverAsk.saveToDisk", "application/x-gzip")
 
-    driver = webdriver.Firefox(firefox_profile=profile)'''
+    driver = webdriver.Firefox(firefox_profile=profile)
     
     elem = driver.find_element_by_id("scanDNA")
     elem.clear()
