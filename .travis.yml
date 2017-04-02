@@ -31,7 +31,6 @@ before_install:
 
 before_script:
  - wget https://chromedriver.storage.googleapis.com/2.28/chromedriver_linux64.zip
- - mkdir chromedriver
  - unzip -a -o chromedriver_linux64.zip -d chromedriver
  - export PATH=$PATH:$PWD/chromedriver
  - "export DISPLAY=:99.0"
