@@ -17,7 +17,7 @@ branches:
   only: master
  
 before_install:
-  - wget https://github.com/mozilla/geckodriver/releases/download/v0.11.1/geckodriver-v0.11.1-linux64.tar.gz
+  - wget https://github.com/mozilla/geckodriver/releases/download/v0.15.0/geckodriver-v0.15.0-linux64.tar.gz
   - mkdir geckodriver
   - tar -xzf geckodriver-v0.11.1-linux64.tar.gz -C geckodriver
   - export PATH=$PATH:$PWD/geckodriver
@@ -33,9 +33,10 @@ before_script:
   
 cache: pip
 install:
-  - pip install biopython
-  - pip install mygene
-  - pip install selenium
+ - pip install marionette_driver
+ - pip install biopython
+ - pip install mygene
+ - pip install selenium
   
 script:
   - python Starter.py Gene_acd_ensemble_ID.csv
