@@ -4,7 +4,6 @@ python:
  - 2.7
  
 cache: pip
-
 install:
  - pip install biopython
  - pip install mygene
@@ -13,6 +12,12 @@ install:
  before_script:
  - "export DISPLAY=:99.0"
  - "sh -e /etc/init.d/xvfb start"
+ 
+ env:
+  global:
+    - CHROME_REVISION=`curl -s http://commondatastorage.googleapis.com/chromium-browser-snapshots/Linux_x64/LAST_CHANGE`
+    - CHROMEDRIVER_VERSION=`curl -s http://chromedriver.storage.googleapis.com/LATEST_RELEASE`
+    - PATH=$PATH:$PWD/chrome-linux
  
  script:
  - export CHROME_REVISION=`curl -s http://commondatastorage.googleapis.com/chromium-browser-snapshots/Linux_x64/LAST_CHANGE`
