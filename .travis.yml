@@ -1,5 +1,4 @@
 language: python
-
 python:
  - 2.7
  
@@ -15,18 +14,18 @@ install:
  - "sh -e /etc/init.d/xvfb start"
  
  script:
-  - export CHROME_REVISION=`curl -s http://commondatastorage.googleapis.com/chromium-browser-snapshots/Linux_x64/LAST_CHANGE`
-  - export CHROMEDRIVER_VERSION=`curl -s http://chromedriver.storage.googleapis.com/LATEST_RELEASE`
-  - curl -L -O "http://commondatastorage.googleapis.com/chromium-browser-snapshots/Linux_x64/${CHROME_REVISION}/chrome-linux.zip"
-  - unzip chrome-linux.zip
+ - export CHROME_REVISION=`curl -s http://commondatastorage.googleapis.com/chromium-browser-snapshots/Linux_x64/LAST_CHANGE`
+ - export CHROMEDRIVER_VERSION=`curl -s http://chromedriver.storage.googleapis.com/LATEST_RELEASE`
+ - curl -L -O "http://commondatastorage.googleapis.com/chromium-browser-snapshots/Linux_x64/${CHROME_REVISION}/chrome-linux.zip"
+ - unzip chrome-linux.zip
 
-  - curl -L -O "http://chromedriver.storage.googleapis.com/${CHROMEDRIVER_VERSION}/chromedriver_linux64.zip"
-  - unzip chromedriver_linux64.zip
+ - curl -L -O "http://chromedriver.storage.googleapis.com/${CHROMEDRIVER_VERSION}/chromedriver_linux64.zip"
+ - unzip chromedriver_linux64.zip
 
-  - chmod +x chromedriver
-  - mv chromedriver chrome-linux/chromedriver
-  - export PATH=$PATH:$PWD/chrome-linux
+ - chmod +x chromedriver
+ - mv chromedriver chrome-linux/chromedriver
+ - export PATH=$PATH:$PWD/chrome-linux
 
-  - export CHROME_BINARY=$PWD/chrome-linux/chrome
-  - export CHROMEDRIVER=$PWD/chrome-linux/chromedriver
-  - python Starter.py Gene_acd_ensemble_ID.csv
+ - export CHROME_BINARY=$PWD/chrome-linux/chrome
+ - export CHROMEDRIVER=$PWD/chrome-linux/chromedriver
+ - python Starter.py Gene_acd_ensemble_ID.csv
