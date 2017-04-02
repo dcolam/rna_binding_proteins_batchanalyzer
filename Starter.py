@@ -88,14 +88,14 @@ for key in path2groups:
     path2groups[key].append(batch_load_files(path2groups[key][0]))
     #rbp_batch(path2groups[key])
     
-
+'''
 print path2groups
 for key in path2groups: 
     print key
     #rbp_batch(path2groups[key])
     for key1 in path2groups[key]:
         print key1
-        #rbp_batch(path2groups[key1])
+        #rbp_batch(path2groups[key1])'''
         
 
 #print path2groups
