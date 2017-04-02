@@ -51,7 +51,7 @@ for i in range(0, len(table_ID[0])):
 #path = raw_input('Where do you want to save the sequences?')
 
 
-path = os.path.dirname(paths[1]) + '/Output/groupedSequences'
+path = os.path.dirname('/home/travis/virtualenv/python2.7.12/lib/python2.7/Output/groupedSequences')
 path2groups = {}
 if not os.path.exists(path):
     os.makedirs(path)
