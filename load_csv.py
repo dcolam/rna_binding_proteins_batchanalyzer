@@ -108,13 +108,13 @@ def save_csv_of_allrbp(dict_from_loadcsv, destpath):
         if not os.path.isdir(destpath + '/output'):
             os.makedirs(destpath + '/output')
             
-    for filename in os.listdir(destpath + '/output'):
+    '''for filename in os.listdir(destpath + '/output'):
          if '.csv' in filename:
              numofprevioustrials = len(os.listdir(destpath + '/output')) + 1
          else:
-            numofprevioustrials = 0
+            numofprevioustrials = 0'''
     
-    save_csv = open(destpath + '/output/allrpbsaved%s.csv'% numofprevioustrials , 'w+')
+    save_csv = open(destpath + '/output/allrpbsaved%s.csv', 'w+') #% numofprevioustrials 
     for key in dict_from_loadcsv:
             save_csv.write(str(key) + ',\n')
             print key
