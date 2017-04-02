@@ -85,11 +85,11 @@ def load_csv_in_batch(path2allgroups):
         #list_all_groups = list_all_groups.append(dict_all_genes)
         dict_all_groups[filenamegroup].append(dict_all_genes)
     
-    print dict_all_groups
+    '''print dict_all_groups
     for key in dict_all_groups: 
         print key
         for keys in dict_all_groups[key]:
-            print keys
+            print keys'''
     save_csv_of_allrbp(dict_all_groups, path2allgroups)
     return dict_all_groups
 
