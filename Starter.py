@@ -98,7 +98,7 @@ for key in path2groups:
         #rbp_batch(path2groups[key1])
         
 
-print path2groups
+#print path2groups
 rbp_batch(path2groups)
 load_csv_in_batch(path)
 
