@@ -100,7 +100,7 @@ for key in path2groups:
 
 print path2groups
 rbp_batch(path2groups)
-load_csv_in_batch(path[1])
+load_csv_in_batch(path)
 
 
 #next step: build a function which sends the seq to the database and stores the .csv in a folder
