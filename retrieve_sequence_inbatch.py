@@ -42,7 +42,7 @@ def batch_retrieve_seq(list_gene_id, singlefile, path): #give a list with gene i
 def convert_ID_getAllIsoformsNM(ensemble_ID, boolSave, path, preffix = 'NM'): #define prefix, default = NM for mRNA transcript variants
     print 'Converting IDs'
     mg = mygene.MyGeneInfo()
-    print mg.getgene(ensemble_ID, fields = 'all', as_dataframe = True)
+    #print mg.getgene(ensemble_ID, fields = 'all', as_dataframe = True)
     list_xli = mg.getgene(ensemble_ID, fields = 'all', as_dataframe = True)['accession']['rna']
     list_transcript = [mg.getgene(ensemble_ID, fields = 'all', as_dataframe = True)['symbol']]
     if not preffix == 'all':
