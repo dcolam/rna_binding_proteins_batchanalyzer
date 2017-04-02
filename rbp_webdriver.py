@@ -44,6 +44,7 @@ def rbp_webdriver(path, gene_name, seq):
 
     driver = webdriver.Firefox(firefox_profile=profile)'''
     
+    driver.get("http://cisbp-rna.ccbr.utoronto.ca/TFTools.php")
     elem = driver.find_element_by_id("scanDNA")
     elem.clear()
     
