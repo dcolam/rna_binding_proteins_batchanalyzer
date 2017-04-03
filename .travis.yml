@@ -52,7 +52,8 @@ deploy:
   provider: releases
   api_key:
     secure: YOUR_API_KEY_ENCRYPTED
-  file: Output.zip
+  file:
+   - Output.zip
   skip_cleanup: true
   on:
     tags: true
