@@ -51,7 +51,7 @@ script:
 deploy:
   provider: releases
   api_key:
-    secure: encrypted_02c17b2a0879_key
+    secure: "D+QWPJqEDqQqC+sGBmD007cHp8uGTFqVKYT0dsXmMcV1KCCwqQIR6qiniVUJa8/UF4Yp9/RbKowUcldjL74uVJJFtxKYBsS3o5KU/EBPWyLhYd0yG6IssaqkCZXRMl9LrDNRJkBpkb/4lLWk7PNjGdzZZgBE7YXDepFnPbIVYZBxsKQZ3Trsd+pQfJSTJKkVz8LcDvt5nmRDPIkNNKZUuahPxzUQqU9RwU5mpI1ZVMM/fOo6wYA/ms5cBt4ChnnS4jYugp0I0lLSMPtA/2FsbmFYJ0JhkDbJpv+ef/xH/VH4LekJozGN91l0X3NVdAsKNPRxFANvNiFKzGSX6sHaX/NhQeTn8wZoIDiX4DEMt5PM4O1r8PF822ta2VV/x/AX1Dz4zITghZ8Pm3aQYTqGe3RB63bo0w1NflM2Y0epcAudvI+iq28goyM1gt2Gu89le/gZGU8nKTReyvfb/Uc5vcD6E9INYsIZt6xPCGmX7H0dnbnG63YfqhFBwtMfoGP3dDJMykThNvaJ6k4HuwA7mVZ7zj7xlw3QN9t0/kgWgXMCpBqF1jDuRBKJSKgC5N3sc3RajXOsY54/Pgli8TgcylvVbXj/JlZOXxd2IkOsJT4fk8raRo0VwaObdDF60SG4lKDPTjX+1KRhNpb9SjoyGasCAczfgOwxT0s6dpbGvL0="
   file:
    - Output.zip
   skip_cleanup: true
