@@ -46,15 +46,7 @@ script:
  - export CHROME_BINARY=$PWD/chrome-linux/chrome
  - export CHROMEDRIVER=$PWD/chrome-linux/chromedriver
  - python Starter.py Gene_acd_ensemble_ID.csv
- 
-deploy:
-  provider: releases
-  api_key:
-    secure: YOUR_API_KEY_ENCRYPTED
-  file_glob: true
-  file: ./Output
-  skip_cleanup: true
-  on:
-   tags: true
-  on:
-    tags: true
+
+notifications:
+  on success: never
+
