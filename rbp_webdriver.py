@@ -70,7 +70,8 @@ def rbp_webdriver(path, gene_name, seq):
     
     element.submit()    
     assert "No results found." not in driver.page_source
-    
+    while 'Download excel spreadsheet (csv text format)' not in driver.page_source:
+        time.sleep(3)
     
     link = driver.find_element_by_link_text('Download excel spreadsheet (csv text format)')
     driver.get(link.get_attribute('href'))
