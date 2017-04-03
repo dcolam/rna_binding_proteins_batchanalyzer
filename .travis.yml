@@ -51,12 +51,13 @@ script:
 deploy:
   provider: releases
   api_key:
-    secure: 119aae08f206ee98a439eff21442483baed7c90e
+    secure: encrypted_02c17b2a0879_key
   file:
    - Output.zip
   skip_cleanup: true
   on:
     tags: true
+    all_branches: true
     
 notifications:
  on success: never
