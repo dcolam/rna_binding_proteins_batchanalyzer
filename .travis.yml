@@ -49,4 +49,13 @@ script:
 
 notifications:
   on success: never
+  
+deploy:
+  provider: releases
+  api-key: "GITHUB OAUTH TOKEN"
+  file_glob: true
+  file: ./Output/*
+  skip_cleanup: true
+  on:
+    tags: true
 
