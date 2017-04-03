@@ -46,17 +46,17 @@ script:
  - export CHROME_BINARY=$PWD/chrome-linux/chrome
  - export CHROMEDRIVER=$PWD/chrome-linux/chromedriver
  - python Starter.py Gene_acd_ensemble_ID.csv
-
-notifications:
-  on success: never
+ - zip -r Output.zip $TRAVIS_BUILD_DIR/Output
   
 deploy:
   provider: releases
   api_key:
     secure: YOUR_API_KEY_ENCRYPTED
-  file_glob: true
-  file: /home/travis/build/dcolam/rna_binding_proteins_batchanalyzer/Output/*
+  file: Output.zip
   skip_cleanup: true
   on:
     tags: true
+    
+notifications:
+ on success: never
 
