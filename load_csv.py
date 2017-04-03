@@ -47,7 +47,7 @@ def load_csv(filepath):
             if ',' in row[4]:
                 #print row[4]
                 row[4] = row[4].replace(',', ' ')
-                print row[4]
+                #print row[4]
             rbp_list.append(row)
             rbp_name_list.append(row[1]) #extract more data here
     dict_rbp_per_gene[filename] = rbp_list
