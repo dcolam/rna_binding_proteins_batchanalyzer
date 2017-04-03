@@ -117,7 +117,7 @@ def save_csv_of_allrbp(dict_from_loadcsv, destpath):
     save_csv = open(destpath + '/output/allrpbsaved%s.csv', 'w+') #% numofprevioustrials 
     for key in dict_from_loadcsv:
             save_csv.write(str(key) + ',\n')
-            print key
+            #print key
             for k in range(0, len(dict_from_loadcsv[key])):
                 for keys in dict_from_loadcsv[key][k]:
                     save_csv.write(str(keys) + ',\n')
