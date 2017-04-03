@@ -45,7 +45,7 @@ script:
 
  - export CHROME_BINARY=$PWD/chrome-linux/chrome
  - export CHROMEDRIVER=$PWD/chrome-linux/chromedriver
- - python Starter.py new-data.csv
+ - python Starter.py new_data.csv
  - zip -r Output.zip $TRAVIS_BUILD_DIR/Output
   
 deploy:
