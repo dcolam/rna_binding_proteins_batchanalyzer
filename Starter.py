@@ -15,6 +15,7 @@ Input = ''
 Output = ''
 
 print sys.argv
+print os.getcwd()
 
 if len(sys.argv) == 1:
     while Input == '' and Output == '':
