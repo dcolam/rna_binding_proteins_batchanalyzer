@@ -43,30 +43,31 @@ def convert_ID_getAllIsoformsNM(ensemble_ID, boolSave, path, preffix = 'NM'): #d
     print 'Converting IDs'
     mg = mygene.MyGeneInfo()
     #print mg.getgene(ensemble_ID, fields = 'all', as_dataframe = True)
-    list_xli = mg.getgene(ensemble_ID, fields = 'all', as_dataframe = True)['accession']['rna']
-    list_transcript = [mg.getgene(ensemble_ID, fields = 'all', as_dataframe = True)['symbol']]
-    if not preffix == 'all':
-        for i in range(0, len(list_xli)):
-            if preffix == 'NM':
-                if list_xli[i][:2] == preffix:
+    if 'accession' in mg.getgene(ensemble_ID, fields = 'all', as_dataframe = True):
+        list_xli = mg.getgene(ensemble_ID, fields = 'all', as_dataframe = True)['accession']['rna']
+        list_transcript = [mg.getgene(ensemble_ID, fields = 'all', as_dataframe = True)['symbol']]
+        if not preffix == 'all':
+            for i in range(0, len(list_xli)):
+                if preffix == 'NM':
+                    if list_xli[i][:2] == preffix:
+                        list_transcript.append(list_xli[i])
+                elif list_xli[i][:2] == preffix:
                     list_transcript.append(list_xli[i])
-            elif list_xli[i][:2] == preffix:
-                list_transcript.append(list_xli[i])
-    else:
-        list_transcript.append(li_xli)
-        
-    print 'ID converted'
-    if boolSave == False:
-        return list_transcript
-    if boolSave == True:
-        if len(list_transcript) != 0:
-            batch_retrieve_seq(list_transcript, 'True', path)
         else:
-            print 'No RefSeq Ids with the Prefix %s found' %preffix
-            convert_ID_getAllIsoformsNM(ensemble_ID, boolSave, path, 'all')
-    
-
-
+            list_transcript.append(li_xli)
+            
+        print 'ID converted'
+        if boolSave == False:
+            return list_transcript
+        if boolSave == True:
+            if len(list_transcript) != 0:
+                batch_retrieve_seq(list_transcript, 'True', path)
+            else:
+                print 'No RefSeq Ids with the Prefix %s found' %preffix
+                convert_ID_getAllIsoformsNM(ensemble_ID, boolSave, path, 'all')
+    else:
+         print 'No RefSeq found, gene %s has been skipped' %ensemble_ID
+            
 
 def startSeqsaving(xli, path):
     for i in range(0, len(xli)):
