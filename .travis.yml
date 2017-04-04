@@ -45,7 +45,7 @@ script:
 
  - export CHROME_BINARY=$PWD/chrome-linux/chrome
  - export CHROMEDRIVER=$PWD/chrome-linux/chromedriver
- - python Starter.py new_data_filtered2.csv
+ - python Starter.py Gene_acd_ensemble_ID.csv
  - zip -r Output.zip $TRAVIS_BUILD_DIR/Output
   
 deploy:
