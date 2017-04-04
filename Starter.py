@@ -43,8 +43,6 @@ for i in range(0, len(table_ID[0])):
 for i in range(0, len(table_ID[0])):
     #dict_geneGroups[str('group' + str(i+1))] = []
     for j in range(1, len(table_ID)):
-        print j, i
-
         dict_geneGroups[table_ID[0][i]].append(table_ID[j][i])
             
 #print dict_geneGroups
