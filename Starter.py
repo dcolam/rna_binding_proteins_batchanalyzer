@@ -98,8 +98,8 @@ path = os.path.dirname('./Output/groupedSequences')
 
             
             
-split_webdriver(path2groups)
-#thread_webdriver(path2groups)
+#split_webdriver(path2groups)
+thread_webdriver(path2groups)
 load_csv_in_batch(path)
 
 
