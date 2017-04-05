@@ -5,17 +5,18 @@ Created on Mar 19, 2017
 '''
 
 import sys, time, os
-from getIDs import getIDs
+from getIDs import getIDs, create_folders
 from retrieve_sequence_inbatch import startSeqsaving
 from readFasta import batch_load_files
 from rbp_webdriver import rbp_batch
+from split import splitjob
 from load_csv import load_csv_in_batch
+
 start_time = time.time()
 Input = ''
 Output = ''
 
 print sys.argv
-print os.getcwd()
 
 if len(sys.argv) == 1:
     while Input == '' and Output == '':
@@ -32,38 +33,33 @@ while not os.path.isfile(paths[1]):
     print ''
     paths = ['', Input, Output]
 
-table_ID = getIDs(paths[1])
-numberOfGeneGroups = len(table_ID[1])
+dict_geneGroups = getIDs(paths[1])
+#numberOfGeneGroups = len(table_ID[1])
 
-dict_geneGroups = {}
-
-for i in range(0, len(table_ID[0])):
-    dict_geneGroups[table_ID[0][i]] = []
-    
-for i in range(0, len(table_ID[0])):
-    #dict_geneGroups[str('group' + str(i+1))] = []
-    for j in range(1, len(table_ID)):
-        dict_geneGroups[table_ID[0][i]].append(table_ID[j][i])
+#===============================================================================
+# dict_geneGroups = {}
+# 
+# for i in range(0, len(table_ID[0])):
+#     dict_geneGroups[table_ID[0][i]] = []
+#     
+# for i in range(0, len(table_ID[0])):
+#     #dict_geneGroups[str('group' + str(i+1))] = []
+#     for j in range(1, len(table_ID)):
+#         #print j, i
+#         dict_geneGroups[table_ID[0][i]].append(table_ID[j][i])
+#===============================================================================
             
 #print dict_geneGroups
         
 #path = raw_input('Where do you want to save the sequences?')
+path2groups = create_folders(dict_geneGroups)
 
-
-path = os.path.dirname('./Output/groupedSequences')
-path2groups = {}
-if not os.path.exists(path):
-    os.makedirs(path)
-
-for key in dict_geneGroups:
-    pathGroup = path + '/' + key
-    path2groups[key] = []
-    if not os.path.exists(pathGroup):
-        os.makedirs(pathGroup)
-        print 'Folder %s created' %key
-        print ''
-    path2groups[key].append(pathGroup)
-    startSeqsaving(dict_geneGroups[key], pathGroup) 
+splitjob(dict_geneGroups, path2groups)
+    
+#===============================================================================
+# for key in dict_geneGroups:
+#     startSeqsaving(dict_geneGroups[key], path2groups[key]) 
+#===============================================================================
 
 print ''
 print 'Groups: '
