@@ -20,7 +20,7 @@ def splitjob(dict_geneGroups, path2groups):
     # for i in range(0, len(jobs)):
     #     jobs[i].join()
     #===========================================================================
-    pool = multiprocessing.Pool(processes = multiprocessing.cpu_count())
+    pool = multiprocessing.Pool(processes = 2)
 
     # max number of parallel process
     ITERATION_COUNT = multiprocessing.cpu_count()-1
@@ -49,7 +49,7 @@ def split_webdriver(dict_geneGroups):
     # process.start()
     # process.join()
     #===========================================================================
-    pool = multiprocessing.Pool()
+    pool = multiprocessing.Pool(processes = 2)
 
     # max number of parallel process
     ITERATION_COUNT = multiprocessing.cpu_count()
