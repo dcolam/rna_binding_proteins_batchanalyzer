@@ -28,7 +28,7 @@ def splitjob(dict_geneGroups, path2groups):
 
 
     for key in dict_geneGroups:
-        pool.apply_async(startSeqsaving, args = [dict_geneGroups[key], path2groups[key][0]])
+        pool.apply_async(startSeqsaving, args = (dict_geneGroups[key], path2groups[key][0]))
         
     pool.close()
     pool.join()
@@ -57,7 +57,7 @@ def split_webdriver(dict_geneGroups):
 
 
     for key in dict_geneGroups:
-        pool.apply_async(rbp_batch, args = [dict_geneGroups[key], key])
+        pool.apply_async(rbp_batch, args = (dict_geneGroups[key], key))
         
     pool.close()
     pool.join()
