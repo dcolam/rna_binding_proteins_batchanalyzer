@@ -104,8 +104,10 @@ for key in path2groups:
             #make for loop here for when all_transcript == TRUE
             
             
-split_webdriver(path2groups)
+#split_webdriver(path2groups)
+thread_webdriver(path2groups)
 load_csv_in_batch(path)
+
 
 
 #next step: build a function which sends the seq to the database and stores the .csv in a folder
