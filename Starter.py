@@ -9,8 +9,9 @@ from getIDs import getIDs, create_folders
 from retrieve_sequence_inbatch import startSeqsaving
 from readFasta import batch_load_files
 from rbp_webdriver import rbp_batch
-from split import splitjob
+from split import splitjob, split_webdriver
 from load_csv import load_csv_in_batch
+import multiprocessing
 
 start_time = time.time()
 Input = ''
@@ -93,8 +94,17 @@ for key in path2groups:
         #rbp_batch(path2groups[key1])'''
         
 
-#print path2groups
-rbp_batch(path2groups)
+path = os.path.dirname('./Output/groupedSequences')
+for key in path2groups:
+    print '------------------------------------\n'
+    print 'Working on gene group ', key
+    for i in range(1, len(path2groups[key])):
+        for keys in (path2groups[key][i]):
+            print 'Sending Sequences for RBP binding motives of ', keys 
+            #make for loop here for when all_transcript == TRUE
+            
+            
+split_webdriver(path2groups)
 load_csv_in_batch(path)
 
 
