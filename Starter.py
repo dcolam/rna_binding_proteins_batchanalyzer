@@ -11,7 +11,7 @@ from readFasta import batch_load_files
 from rbp_webdriver import rbp_batch
 from split import splitjob, split_webdriver
 from load_csv import load_csv_in_batch
-import multiprocessing
+from mythread import thread_webdriver
 
 start_time = time.time()
 Input = ''
