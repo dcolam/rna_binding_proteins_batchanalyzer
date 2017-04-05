@@ -40,7 +40,9 @@ def thread_webdriver(dict_geneGroups):
     
     
     
-    threadList = ["Thread-1", "Thread-2", "Thread-3", "Thread-4", "Thread-5", "Thread-6"]
+    threadList = []
+    for i in range(0, len(dict_geneGroups)):
+        threadList.append('Thread-' + str(i))
     #nameList = ["One", "Two", "Three", "Four", "Five"]
     
     queueLock = threading.Lock()
