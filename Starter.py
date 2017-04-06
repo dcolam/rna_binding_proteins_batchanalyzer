@@ -11,7 +11,8 @@ from readFasta import batch_load_files
 from rbp_webdriver import rbp_batch
 from split import splitjob, split_webdriver
 from load_csv import load_csv_in_batch
-from mythread import thread_webdriver
+import multiprocessing
+from mythread import thread_webdriver, thread_retrieveseq
 
 start_time = time.time()
 Input = ''
@@ -55,7 +56,8 @@ dict_geneGroups = getIDs(paths[1])
 #path = raw_input('Where do you want to save the sequences?')
 path2groups = create_folders(dict_geneGroups)
 
-splitjob(dict_geneGroups, path2groups)
+#splitjob(dict_geneGroups, path2groups)
+thread_retrieveseq(dict_geneGroups, path2groups)
     
 #===============================================================================
 # for key in dict_geneGroups:
@@ -101,7 +103,6 @@ path = os.path.dirname('./Output/groupedSequences')
 #split_webdriver(path2groups)
 thread_webdriver(path2groups)
 load_csv_in_batch(path)
-
 
 
 #next step: build a function which sends the seq to the database and stores the .csv in a folder
