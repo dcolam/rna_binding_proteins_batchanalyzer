@@ -73,10 +73,18 @@ def rbp_webdriver(path, gene_name, seq):
     element.submit()    
     assert "No results found." not in driver.page_source
     
-    while 'Download excel spreadsheet (csv text format)' not in driver.page_source:
+    counter = 0
+
+    while 'Download excel spreadsheet (csv text format)' not in driver.page_source and counter < 5:
         print 'Loading...'
-        time.sleep(3)
-        print '...'
+        time.sleep(2)
+        #print '...'
+        counter += 1
+        
+    if 'Download excel spreadsheet (csv text format)' not in driver.page_source:
+        driver.execute_script("window.history.go(-1)")
+        element = driver.find_element_by_xpath("//select[@name='whichScan']")
+        element.submit()
     
     
     link = driver.find_element_by_link_text('Download excel spreadsheet (csv text format)')
@@ -84,8 +92,8 @@ def rbp_webdriver(path, gene_name, seq):
     
     link_list = link.get_attribute('href').split('/')
     filename = link_list[-1]
-    print filename
-    print path + '/' + filename
+    #print filename
+    #print path + '/' + filename
     #change filename here 
     
     if os.path.isfile(str(path + '/' + filename)):
@@ -109,8 +117,8 @@ def rbp_batch(dict_geneGroup_key, key):
     # key = task[1]
     # dict_geneGroup_key = task[0]
     #===========================================================================
-    print '------------------------------------\n'
-    print 'Working on gene group ', key
+    #print '------------------------------------\n'
+    #print 'Working on gene group ', key
     path = dict_geneGroup_key[0]
     for i in range(1, len(dict_geneGroup_key)):
         for keys in (dict_geneGroup_key[i]):
